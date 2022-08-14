@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+//paginas
+import Map from './paginas/map/Map';
+
+//Styled components
+import {StyledContainer} from './componentes/styles';
+
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Editado <code>src/App.js</code> para probar
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <StyledContainer>
+        <Switch>
+        <Route path='/Map'>
+          <Map />
+          </Route>
+        <Route path='/Home'>
+          <About />
+          </Route>
+        </Switch>
+      </StyledContainer>
+    </Router>
   );
 }
 
