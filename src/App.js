@@ -15,7 +15,6 @@ function App() {
           <Map />
           </Route>
         <Route path='/Home'>
-          <About />
           </Route>
         </Switch>
       </StyledContainer>
