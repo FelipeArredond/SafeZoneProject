@@ -1,5 +1,6 @@
 //paginas
 import Map from './paginas/map/Map';
+import Home from './paginas/Home'
 
 //Styled components
 import {StyledContainer} from './componentes/styles';
@@ -14,7 +15,8 @@ function App() {
         <Route path='/Map'>
           <Map />
           </Route>
-        <Route path='/Home'>
+        <Route path='/'>
+          <Home/>
           </Route>
         </Switch>
       </StyledContainer>
