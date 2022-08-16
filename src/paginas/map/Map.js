@@ -32,7 +32,107 @@ function Mapa() {
                 />
                     <GeoJSON 
                     style={{fillColor: "red", fillOpacity:0.4, color:"black", weight:1}} 
-                    data={mapData.features}
+                    data={mapData.features[0]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "yellow", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[1]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "red", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[2]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "green", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[3]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "yellow", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[4]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "red", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[5]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "yellow", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[6]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "red", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[7]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "red", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[8]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "red", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[9]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "green", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[10]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "yellow", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[11]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "green", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[12]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "red", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[13]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "red", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[14]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "yellow", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[15]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "green", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[16]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "red", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[17]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "yellow", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[18]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "yellow", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[19]}
+                    onEachFeature={popup}
+                    />
+                    <GeoJSON 
+                    style={{fillColor: "yellow", fillOpacity:0.4, color:"black", weight:1}} 
+                    data={mapData.features[20]}
                     onEachFeature={popup}
                     />
         </MapContainer>
