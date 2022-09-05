@@ -1,4 +1,5 @@
 //paginas
+import Map from './paginas/Busqueda';
 import Map from './paginas/map/Map';
 import Home from './paginas/Home'
 
@@ -12,6 +13,9 @@ function App() {
     <Router>
       <StyledContainer>
         <Switch>
+        <Route path='/Busqueda'>
+          <Map />
+          </Route>
         <Route path='/Map'>
           <Map />
           </Route>
