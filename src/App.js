@@ -1,5 +1,5 @@
 //paginas
-import Map from './paginas/Busqueda';
+import Recomendados from './paginas/Busqueda';
 import Map from './paginas/map/Map';
 import Home from './paginas/Home'
 
@@ -14,7 +14,7 @@ function App() {
       <StyledContainer>
         <Switch>
         <Route path='/Busqueda'>
-          <Map />
+          <Recomendados />
           </Route>
         <Route path='/Map'>
           <Map />
