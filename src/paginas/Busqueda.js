@@ -10,9 +10,6 @@ import {FaSearchLocation} from 'react-icons/fa';
 
 import {Formik, Form} from 'formik';
 import { TextInput } from '../componentes/FormLib';
-
-import Axios from 'axios';
-
 import React, { useEffect, useState } from "react";
 
 const Recomendados = () => {
@@ -126,7 +123,7 @@ const Recomendados = () => {
             allLugares.map((lugar)=>{
                 return(
                     <StyledAreaObject key={lugar.ID_lugar}>
-                        <TextLinkT to="/Lugar">{lugar.Nombre}</TextLinkT>
+                        <StyledSubTitle>{lugar.Nombre}</StyledSubTitle>
                     </StyledAreaObject>
                 );
             })
@@ -150,7 +147,7 @@ const Recomendados = () => {
     return(
         <div>
             <StyledFormArea2 background-color={colors.green}>
-                <Formik>
+                <Formik onSubmit={'submited'}>
                     {() => (
                         <Form>
                             <TextInput
@@ -179,7 +176,7 @@ const Recomendados = () => {
                         <StyledSubTitle>{BusquedaStatusT}</StyledSubTitle>
                             {/* <ExtraTextSub>Calificación: </ExtraTextSub><ExtraText>{BusquedaStatusC}</ExtraText>
                             <ExtraTextSub>Reportes presentados en la zona: </ExtraTextSub><ExtraText>{BusquedaStatusR}</ExtraText> */}
-                            {Lugares.length > 0 ? mapLugares(): console.log('No hay lugares')}
+                            {Lugares.length > 0 ? mapLugares(): <StyledSubTitle>No hay lugares buscados!</StyledSubTitle>}
                         <ExtraText>{BusquedaStatusD}</ExtraText>
                         </StyledAreaObject>
             </StyledFormArea>
