@@ -1,10 +1,10 @@
-import {React , useEffect, useState} from 'react';
+import {React , useContext, useEffect, useState} from 'react';
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import './map.css';
-import { getDropdownMenuPlacement } from 'react-bootstrap/esm/DropdownMenu';
 import { icon } from 'leaflet';
 import mark from './../../images/gps.png'
+import { hoodsContext } from '../../context/barriosContext';
 
 
 
@@ -23,6 +23,8 @@ function Mapa() {
         }
     }
 
+    const {hoods,setHoods} = useContext(hoodsContext)
+
     const dummiesMarkers = [[6.219002240823769, -75.59803733167],[6.249403142357898, -75.60336646786811],[6.2282431969064165, -75.60266909358012],[6.195563058229299, -75.54683623066008],[6.221026754633193, -75.57424628809825]]
 
     const [places, setPlaces] = useState([]);
@@ -37,6 +39,7 @@ function Mapa() {
         });
         const data = await response.json();
         setPlaces(data)
+        setHoods(data)
     }
 
     useEffect(()=>{
