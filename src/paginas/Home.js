@@ -17,7 +17,10 @@ const Home = () => {
             </StyledSubTitle>
             <ButtonPosition>
             <StyledButton to='/Map'>
-                Empieza
+                Mapa
+            </StyledButton>
+            <StyledButton to='/Busqueda'>
+                Búsqueda
             </StyledButton>
             </ButtonPosition>
 
