@@ -30,7 +30,7 @@ function Mapa() {
     const [places, setPlaces] = useState([]);
 
     async function fetchMapData(){
-        const response = await fetch('http://localhost:3500/api/v1/barrios/barriosNew',
+        const response = await fetch('http://localhost:3500/barrios/',
         {
             method: 'GET',
             headers:{
@@ -38,7 +38,7 @@ function Mapa() {
             }
         });
         const data = await response.json();
-        setPlaces(data)
+        setPlaces(data.body)
         setHoods(data)
     }
 
@@ -48,21 +48,26 @@ function Mapa() {
     },[])
 
     const mapPainting = () =>{
-        return(
-            places.map( (place) =>{
-                return (
-                    <GeoJSON 
-                    style={{fillColor: colorAssignation(place.properties.LIMITECOMUNACORREGIMIENTOID),
-                    fillOpacity:0.4, 
-                    color:"black",
-                    weight:1}} 
-                    data={place}
-                    onEachFeature={popup}
-                    key={place.properties.OBJECTID}
-                    />  
-                );          
-            })
-        );
+        if(places.length > 0){
+            return(
+                places.map( (place) =>{
+                    return (
+                        <GeoJSON 
+                        style={{fillColor: colorAssignation(place.properties.LIMITECOMUNACORREGIMIENTOID),
+                        fillOpacity:0.4, 
+                        color:"black",
+                        weight:1}} 
+                        data={place}
+                        onEachFeature={popup}
+                        key={place.properties.OBJECTID}
+                        />  
+                    );          
+                })
+            );
+        }else{
+            console.log(places)
+            return;
+        }
     }
 
     function popup(feature,layer){
