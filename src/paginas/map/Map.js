@@ -74,12 +74,13 @@ function Mapa() {
     },[])
 
     function colorAssignation(val){
-        if(val < (findMaxScore()*0.05)){
+        if(val > (findMaxScore()*0.6)){
+            return 'red'
+        }
+        else if(val < (findMaxScore()*0.05)){
             return 'green';
         }else if((findMaxScore()*0.2) < val < (findMaxScore()*0.5)){
             return 'yellow';
-        }else{
-            return 'red';
         }
     }
 
