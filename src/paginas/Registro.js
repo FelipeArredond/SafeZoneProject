@@ -20,15 +20,23 @@ const Registro = () => {
     const [EmailReg, setEmailReg] = useState('');
     const [ContraseñaReg, setContraseñaReg] = useState('');
 
-    const registrobd = () => {
-        Axios.post("http://localhost:3001/registro", {
-            Nombre: NombreReg,
-            Apellido: ApellidoReg,
-            Email: EmailReg,
-            contraseña: ContraseñaReg
+    const registrobd = async () => {
+        const body = {
+            "nombre": NombreReg,
+            "apellido": ApellidoReg,
+            "correo": EmailReg,
+            "contraseña": ContraseñaReg
+        }
+        const bodyJSON = JSON.stringify(body)
+        await fetch("http://localhost:3500/usuarios/ ", {
+            method: 'POST',
+            headers: {'Content-type': 'application/json'},
+            body: bodyJSON
         }).then(() => {
             console.log("inserto exitoso");
-        });
+        }).catch((error)=>{
+            console.log(error)
+        })
     };
 
     return(

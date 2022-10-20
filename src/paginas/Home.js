@@ -16,11 +16,8 @@ const Home = () => {
                 Conoce la ciudad de forma segura 
             </StyledSubTitle>
             <ButtonPosition>
-            <StyledButton to='/Map'>
-                Mapa
-            </StyledButton>
-            <StyledButton to='/Busqueda'>
-                Búsqueda
+            <StyledButton to='/Inicio'>
+                Comenzar
             </StyledButton>
             </ButtonPosition>
 

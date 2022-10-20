@@ -13,14 +13,15 @@ import { IconContext } from 'react-icons';
 import { useContext } from "react";
 import { mapMarkersContext } from "../context/mapMarkersContext";
 import { IoIosEye } from "react-icons/io";
+import { authContext } from "../context/authContext";
 
 const Navbar = () => {
 
     const [sidebar, setSidebar] = useState(false);
-
     const showSidebar = () => setSidebar(!sidebar);
-
     const {showMarker,setShowMarker} = useContext(mapMarkersContext)
+    const {authData} = useContext(authContext)
+    
 
     return (
     <>
@@ -41,7 +42,7 @@ const Navbar = () => {
             </li>
             <li className='user-profile'>
                 <Avatar image={icono_perfil}></Avatar>
-                <p className="user-profile__name">User Name</p>
+                <p className="user-profile__name">{authData.nombre}</p>
             </li>
             {SidebarData.map((item, index) => {
                 return (

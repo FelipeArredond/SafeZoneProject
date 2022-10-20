@@ -11,69 +11,88 @@ import Map from './paginas/map/Map';
 import Navbar from './componentes/Navbar';
 import Lugar from './paginas/Lugar';
 import Calificación from './paginas/Calificación';
-
-//Styled components
 import {StyledContainer} from './componentes/styles';
-
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import HoodsProvider from './context/barriosContext';
 import MapMarkerProvider from './context/mapMarkersContext';
+import AuthProvider from './context/authContext';
+import Protectedroutes from './componentes/Protectedroutes';
 
 
 
 function App() {
   return (
+    <AuthProvider>
     <MapMarkerProvider>
     <HoodsProvider>
       <Router>
         <StyledContainer>
           <Switch>
           <Route path='/Map'>
-          <Navbar />
-            <Map />
-            </Route>
+            <Protectedroutes>
+              <Navbar />
+              <Map />
+            </Protectedroutes>
+          </Route>
           <Route path='/About'>
-          <Navbar />
-            <About />
-            </Route>
-          <Route path='/Reportes'>
-          <Navbar />
-            <Reportes/>
-            </Route>
-          <Route path='/Busqueda'>
-          <Navbar />
-            <Busqueda />
-            </Route>
-          <Route path='/Perfil'>
-          <Navbar />
-              <Perfil />
-            </Route>
-          <Route path='/Lugar'>
+          <Protectedroutes>
             <Navbar />
-              <Lugar />
+            <About />
+          </Protectedroutes>  
+          </Route>
+          <Route path='/Reportes'>
+          <Protectedroutes>
+            <Navbar />
+            <Reportes/>
+          </Protectedroutes>
+          </Route>
+          <Route path='/Busqueda'>
+          <Protectedroutes>
+            <Navbar />
+            <Busqueda />
+          </Protectedroutes>
+          </Route>
+          <Route path='/Perfil'>
+          <Protectedroutes>
+            <Navbar />
+            <Perfil />
+          </Protectedroutes>
+          </Route>
+          <Route path='/Lugar'>
+          <Protectedroutes>
+            <Navbar />
+            <Lugar />
+          </Protectedroutes>
           </Route>
           <Route path='/Calificación'>
+          <Protectedroutes>
             <Navbar />
-              <Calificación />
+            <Calificación />
+          </Protectedroutes>  
           </Route>
             <Route path='/Registro'>
               <Registro />
             </Route>
             <Route path='/Dashboard'>
-            <Navbar />
-            <Dashboard />
+            <Protectedroutes>
+              <Navbar />
+              <Dashboard />
+            </Protectedroutes>  
             </Route>
             <Route path='/Inicio'>
               <Inicio />
             </Route>
             <Route path='/'>
-              <Home />
+              <Protectedroutes>
+                <Home />
+              </Protectedroutes>
             </Route>
           </Switch>
         </StyledContainer>
       </Router>
     </HoodsProvider>
     </MapMarkerProvider>
+    </AuthProvider>
   );
 }
 

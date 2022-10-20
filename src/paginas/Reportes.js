@@ -13,69 +13,34 @@ import React, { useEffect, useState } from "react";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap'
+import { useRef } from "react";
 
 const Reportes = () => {
 
-    const alerta =()=>{
-        alert("Se envió el reporte correctamente")
+    const barrio = useRef();
+    const tipoActo = useRef();
+    const descActo = useRef();
+    const longitud = useRef();
+    const latitud = useRef();
+
+    async function handleForm(e){
+        e.preventDefault();
+        const postData = {
+            "nombre_barrio": barrio.current.value,
+            "tipo_reporte": tipoActo.current.value,
+            "longitud": longitud.current.value,
+            "latitud": latitud.current.value,
+            "descripcion": descActo.current.value
+        }
+        const postDataJson = JSON.stringify(postData)
+        const response = await fetch('http://localhost:3500/reportes/ ',{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: postDataJson
+        });
+        const data = await response.json();
+        console.log(data)
     }
-
-    const [dropdown, setDropdown]=useState(false);
-
-    const [barrio, setBarrio] = useState('');
-
-    const abrirCerrarDropdown=()=>{
-        setDropdown(!dropdown);
-    }
-
-    const Enviar=()=>{
-        setBarrio('Popular')
-    } 
-    const Enviar2=()=>{
-        setBarrio('Santa Cruz')
-    } 
-    const Enviar3=()=>{
-        setBarrio('Manrique')
-    } 
-    const Enviar4=()=>{
-        setBarrio('Aranjuez')
-    } 
-    const Enviar5=()=>{
-        setBarrio('Castilla')
-    } 
-    const Enviar6=()=>{
-        setBarrio('12 de Octubre')
-    } 
-    const Enviar7=()=>{
-        setBarrio('Robledo')
-    } 
-    const Enviar8=()=>{
-        setBarrio('Villa Hermosa')
-    } 
-    const Enviar9=()=>{
-        setBarrio('Buenos Aires')
-    } 
-    const Enviar10=()=>{
-        setBarrio('La candelaria')
-    } 
-    const Enviar11=()=>{
-        setBarrio('Laureles Estadio')
-    } 
-    const Enviar12=()=>{
-        setBarrio('La América')
-    } 
-    const Enviar13=()=>{
-        setBarrio('San Javier')
-    } 
-    const Enviar14=()=>{
-        setBarrio('El poblado')
-    } 
-    const Enviar15=()=>{
-        setBarrio('Guayabal')
-    } 
-    const Enviar16=()=>{
-        setBarrio('Belén')
-    } 
 
     return(
         <div>
@@ -97,72 +62,20 @@ const Reportes = () => {
             </StyledFormArea>
 
             <StyledFormArea>
-                <Dropdown isOpen={dropdown} toggle={abrirCerrarDropdown} size='lg'>
-                    <DropdownToggle caret>
-                        Seleccionar Comuna
-                    </DropdownToggle>
-                    <DropdownMenu>
-                        <DropdownItem header>Comunas</DropdownItem>
-                        <DropdownItem divider/>
-                        <DropdownItem onClick={Enviar}>1. Popular</DropdownItem>
-                        <DropdownItem onClick={Enviar2}>2. Santa Cruz</DropdownItem>
-                        <DropdownItem onClick={Enviar3}>3. Manrique</DropdownItem>
-                        <DropdownItem onClick={Enviar4}>4. Aranjuez</DropdownItem>
-                        <DropdownItem onClick={Enviar5}>5. Castilla</DropdownItem>
-                        <DropdownItem onClick={Enviar6}>6. 12 de Octubre</DropdownItem>
-                        <DropdownItem onClick={Enviar7}>7. Robledo</DropdownItem>
-                        <DropdownItem onClick={Enviar8}>8. Villa Hermosa</DropdownItem>
-                        <DropdownItem onClick={Enviar9}>9. Buenos Aires</DropdownItem>
-                        <DropdownItem onClick={Enviar10}>10. La candelaria</DropdownItem>
-                        <DropdownItem onClick={Enviar11}>11. Laureles Estadio</DropdownItem>
-                        <DropdownItem onClick={Enviar12}>12. La América</DropdownItem>
-                        <DropdownItem onClick={Enviar13}>13. San Javier</DropdownItem>
-                        <DropdownItem onClick={Enviar14}>14. El poblado</DropdownItem>
-                        <DropdownItem onClick={Enviar15}>15. Guayabal</DropdownItem>
-                        <DropdownItem onClick={Enviar16}>16. Belén</DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
-                <ExtraText>{barrio}</ExtraText>
-                <br />
-            
-                <Formik
-                    >
-                        {() => (
-                            <Form>
-
-                                <TextInput
-                                    name='Tipo_acoso'
-                                    type='text'
-                                    label='Tipo de acoso'
-                                    placeholder='Hurto'
-                                    icon={<RiAlarmWarningFill/>}
-                                    /* onChange={(e) => {
-                                        setContraseñaIn(e.target.value);
-                                    }} */
-                                />
-
-                                <TextInput
-                                    name='Descripción'
-                                    type='text'
-                                    label='Descripción'
-                                    placeholder=''
-                                    icon={<MdDescription/>}
-                                    /* onChange={(e) => {
-                                        setContraseñaIn(e.target.value);
-                                    }} */
-                                />
-
-                                <ButtonPosition>
-                                    <StyledFormButton onClick={alerta} to='/Reportes'>
-                                    Enviar
-                                    </StyledFormButton>
-                                    
-                                </ButtonPosition>
-
-                            </Form>
-                        )}
-                    </Formik>
-                </StyledFormArea>
+                <form onSubmit={handleForm} className='reports-form'>
+                    <label>Barrio</label>
+                    <input type={'text'} placeholder={'Nombre del Barrio'} ref={barrio}></input>
+                    <label>Tipo de acto</label>
+                    <input type={'text'} placeholder={'Tipo de acto'} ref={tipoActo}></input>
+                    <label>Descripcion</label>
+                    <input type={'text'} placeholder={'Describa el suceso'} ref={descActo}></input>
+                    <label>Longitud</label>
+                    <input type={'text'} placeholder={'0.0000000'} ref={longitud}></input>
+                    <label>Latitud</label>
+                    <input type={'text'} placeholder={'0.0000000'} ref={latitud}></input>
+                    <button type="submit">Enviar</button>
+                </form>
+            </StyledFormArea>
             <br /><br /><br /><br /><br /><br /><br /><br />
         </div>
     );

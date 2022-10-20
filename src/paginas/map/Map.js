@@ -74,12 +74,12 @@ function Mapa() {
     },[])
 
     function colorAssignation(val){
-        if(val > (findMaxScore()*0.6)){
+        if(val > (findMaxScore()*0.08)){
             return 'red'
         }
-        else if(val < (findMaxScore()*0.05)){
+        else if(val < (findMaxScore()*0.03)){
             return 'green';
-        }else if((findMaxScore()*0.2) < val < (findMaxScore()*0.5)){
+        }else if((findMaxScore()*0.04) < val < (findMaxScore()*0.7)){
             return 'yellow';
         }
     }
@@ -101,7 +101,7 @@ function Mapa() {
                 places.map( (place) =>{
                     return (
                         <GeoJSON 
-                        style={{fillColor: place.properties.SEC_LEVEL,
+                        style={{fillColor: place.properties.SEC_LEVEL || 'green',
                         fillOpacity:0.4, 
                         color:"black",
                         weight:1}} 

@@ -1,6 +1,7 @@
 import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as IoIcons from 'react-icons/io';
+import { useContext } from 'react';
 
 export const SidebarData = [
     {
@@ -22,8 +23,14 @@ export const SidebarData = [
     cName: 'nav-text'
     },
     {
-    title: 'Recomendados',
-    path: '/Recomendados',
+    title: 'Calificaciones',
+    path: '/Calificación',
+    icon: <IoIcons.IoIosPaper/>,
+    cName: 'nav-text'
+    },
+    {
+    title: 'Busqueda',
+    path: '/Busqueda',
     icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
     },

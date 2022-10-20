@@ -1,22 +1,14 @@
-//Styled components
 import {StyledFormArea, StyledFormButton, Avatar, StyledTitle, colors, ButtonPosition, ExtraText, TextLink, CopyrightText} from './../componentes/styles';
-
 import logo from './../assets/logo.png';
-
-//formik
 import {Formik, Form} from 'formik';
 import { TextInput } from '../componentes/FormLib';
-
-//Iconos
 import {FiMail, FiLock} from 'react-icons/fi';
-
-import Axios from 'axios';
-
-import React, { useEffect, useState } from "react";
-import {useHistory} from 'react-router-dom';
+import React, {useState, useContext} from "react";
+import { authContext } from '../context/authContext';
+import { Link } from 'react-router-dom';
 
 const Inicio = () => {
-    const history = useHistory();
+    const {authData,setAuthData} = useContext(authContext)
 
     const [NombreIn, setNombreIn] = useState('');
     const [ApellidoIn, setApellidoIn] = useState('');
@@ -27,41 +19,29 @@ const Inicio = () => {
     const [InicioStatusN, setInicioStatusN] = useState('');
     const [InicioStatusA, setInicioStatusA] = useState('');
 
-    const iniciobd = () => {
-
-        Axios.post("http://localhost:3001/inicio", {
-            Email: EmailIn,
-            contraseña: ContraseñaIn
-        }).then((response) => {
-            if(response.data.message){
-                setInicioStatus(response.data.message)
-            }else{
-                setInicioStatus(response.data[0].Email)
-                setInicioStatusN(response.data[0].Nombre)
-                setInicioStatusA(response.data[0].Apellido)
-                history.push('/Dashboard')
-            }
-        });
-    };
-
-    /* const perfil = () => {
-        Axios.get("http://localhost:3001/perfil", {
-            Nombre: NombreIn,
-            Apellido: ApellidoIn,
-            Email: EmailIn,
-            contraseña: ContraseñaIn
-        }).then((response) => {
-            if(response.data.message){
-                setInicioStatus(response.data.message)
-            }else{
-                setInicioStatus(response.data[0].Email)
-                setInicioStatusN(response.data[0].Nombre)
-                setInicioStatusA(response.data[0].Apellido)
-                history.push('/Dashboard')
-            }
-        });
-    };  */
-
+    async function authLog(){
+        const postData = {
+            "correo": EmailIn,
+            "contraseña": ContraseñaIn
+        }
+        const postDataJson = JSON.stringify(postData)
+        const response = await fetch('http://localhost:3500/usuarios/log',{
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: postDataJson
+        })
+        const data = await response.json()
+        if(data.length > 0){
+            setAuthData({
+                nombre: data[0].nombre,
+                apellido: data[0].apellido,
+                correo: data[0].correo,
+                auth: true
+            })
+        }else{
+            return null
+        }
+    }
 
     return(
         <div>
@@ -102,12 +82,12 @@ const Inicio = () => {
                             </ExtraText>
 
                             <ButtonPosition>
-                                <StyledFormButton onClick={iniciobd}>
-                                Inicia sesión
+                                <StyledFormButton onClick={authLog}>
+                                    <Link to={authData.auth?'/Dashboard':'/Inicio'}> {/*DAR CSS A ESTE LINK*/}
+                                    Inicia sesión
+                                    </Link>    
                                 </StyledFormButton>
-                                
                             </ButtonPosition>
-
                         </Form>
                     )}
                 </Formik>
