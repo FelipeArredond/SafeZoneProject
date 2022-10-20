@@ -1,16 +1,8 @@
-//Styled components
 import {StyledFormArea, StyledFormButton, Avatar, StyledTitle, colors, ButtonPosition, ExtraText, TextLink, CopyrightText} from './../componentes/styles';
-
 import logo from './../assets/logo.png';
-
 import {Formik, Form} from 'formik';
 import { TextInput } from '../componentes/FormLib';
-
-//Iconos
 import {FiMail, FiLock, FiUser} from 'react-icons/fi';
-
-import Axios from 'axios';
-
 import React, { useEffect, useState } from "react";
 
 const Registro = () => {
