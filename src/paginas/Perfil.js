@@ -44,7 +44,7 @@ const Perfil = () => {
                 reports.map((reporte)=>{
                     return(
                         <div key={reporte._id} className={'reportBox'}>
-                            <h3>{reporte.fecha.substring(0,10) || 'No data'}</h3>
+                            <h3>{reporte.fecha?.substring(0,10) || 'No data'}</h3>
                             <h2>{reporte.tipo_reporte}</h2>
                             <p>{reporte.descripcion}</p>
                         </div>

@@ -2,6 +2,8 @@ import {StyledTitle, StyledSubTitle, colors, StyledFormArea, Avatar} from "./../
 import imagen from './../assets/seguridad.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRef } from "react";
+import { useContext } from "react";
+import { authContext } from "../context/authContext";
 
 const Reportes = () => {
 
@@ -11,9 +13,12 @@ const Reportes = () => {
     const longitud = useRef();
     const latitud = useRef();
 
+    const {authData} = useContext(authContext)
+
     async function handleForm(e){
         e.preventDefault();
         const postData = {
+            "usuario": authData.id,
             "nombre_barrio": barrio.current.value,
             "tipo_reporte": tipoActo.current.value,
             "longitud": longitud.current.value,
