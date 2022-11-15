@@ -25,7 +25,7 @@ const Inicio = () => {
             "contraseña": ContraseñaIn
         }
         const postDataJson = JSON.stringify(postData)
-        const response = await fetch('http://localhost:3500/usuarios/log',{
+        const response = await fetch('http://34.66.206.26:8000/usuarios/log',{
             method:'POST',
             headers: {'Content-Type': 'application/json'},
             body: postDataJson
@@ -33,6 +33,7 @@ const Inicio = () => {
         const data = await response.json()
         if(data.length > 0){
             setAuthData({
+                id: data[0]._id,
                 nombre: data[0].nombre,
                 apellido: data[0].apellido,
                 correo: data[0].correo,
@@ -83,9 +84,11 @@ const Inicio = () => {
 
                             <ButtonPosition>
                                 <StyledFormButton onClick={authLog}>
-                                    <Link to={authData.auth?'/Dashboard':'/Inicio'}> {/*DAR CSS A ESTE LINK*/}
-                                    Inicia sesión
-                                    </Link>    
+                                    <TextLink>
+                                        <Link to={authData.auth?'/Dashboard':'/Inicio'} className={'link'} > {/*DAR CSS A ESTE LINK*/}
+                                        Inicia sesión
+                                        </Link>
+                                    </TextLink>    
                                 </StyledFormButton>
                             </ButtonPosition>
                         </Form>

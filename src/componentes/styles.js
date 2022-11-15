@@ -77,8 +77,8 @@ export const AvatarLittle = styled.div`
     background-image: url(${props => props.image});
     background-size: cover;
     position: absolute;
-    top: 100px;
-    left: 1000px;
+    top: 150px;
+    left: 1300px;
 `;
 
 export const StyledButton = styled(Link)`
@@ -182,6 +182,7 @@ export const StyledFormArea2 = styled.div`
     text-align: center;
     border-radius: 20px;
     margin: 20px;
+    margin-top:100px;
     padding-left: 80px;
     justify-content: left;
     align-items: center;
@@ -195,11 +196,14 @@ export const StyledFormArea = styled.div`
     padding: 40px 70px;
     border-radius: 20px;
     margin: 20px;
-`;
+    margin-top:100px;
+    min-width: 600px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;`
+    ;
 
 export const StyledAreaObject = styled.div`
     background-color: ${(props => props.bg || colors.lightgreen)};
-    text-align: left;
+    text-align: center;
     padding: 40px 70px;
     border-radius: 20px;
     margin: 20px;
@@ -231,12 +235,13 @@ export const ExtraTextSub = styled.p`
 `; 
 
 export const TextLink = styled(Link)`
-    text=decoration: none;
+    text-decoration: none;
     color: ${colors.green};
     transition: ease-in-out 0.3s;
 
     &:hover{
-        text-decoration: underline;
+        color: ${colors.green};
+        text-decoration: none;
         letter-spacing: 2px;
         font-weight: bold;
     }
@@ -244,7 +249,7 @@ export const TextLink = styled(Link)`
 
 export const TextLinkT = styled(Link)`
     font-size: 50px;
-    text=decoration: none;
+    text-decoration: none;
     color: ${colors.green};
     transition: ease-in-out 0.3s;
 
@@ -260,7 +265,7 @@ export const StyledIcon = styled.p`
     color: ${colors.black};
     position: absolute;
     font-size: 21px;
-    top: 38px;
+    top: 3px;
     left: 18px;
     ${(props => props.right && `right: 15px; `)};
     ${(props => props.left && `left: 240px; `)};

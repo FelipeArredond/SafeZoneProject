@@ -83,9 +83,7 @@ function App() {
               <Inicio />
             </Route>
             <Route path='/'>
-              <Protectedroutes>
-                <Home />
-              </Protectedroutes>
+              <Home />
             </Route>
           </Switch>
         </StyledContainer>

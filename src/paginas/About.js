@@ -25,11 +25,11 @@ const About = () => {
                 </div>
                 <div>
                     <Avatar image={icono_perfil} />
-                    <ExtraText>Dayana Arrieta</ExtraText>
+                    <ExtraText>Felipe Arredondo</ExtraText>
                 </div>
                 <div>
                     <Avatar image={icono_perfil} />
-                    <ExtraText>Manuela Tolosa</ExtraText>
+                    <ExtraText>Valentina Ochoa</ExtraText>
                 </div>
                 </ButtonPosition>
             </StyledFormArea>

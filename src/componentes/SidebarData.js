@@ -5,6 +5,13 @@ import { useContext } from 'react';
 
 export const SidebarData = [
     {
+        title:'Inicio',
+        path:'/Dashboard',
+        icon: <IoIcons.IoMdHome />,
+        cName: 'nav-text',
+        onClick: console.log('click Markers')
+        },
+    {
     title: 'Perfil',
     path: '/Perfil',
     icon: <FaIcons.FaUser />,
@@ -39,12 +46,4 @@ export const SidebarData = [
     path: '/about',
     icon: <IoIcons.IoMdHelpCircle />,
     cName: 'nav-text'
-    },
-    {
-    title:'Robos registrados',
-    path:'',
-    icon: <IoIcons.IoMdHelpCircle />,
-    cName: 'nav-text',
-    onClick: console.log('click Markers')
-    }
-];
+    }]

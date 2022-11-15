@@ -1,18 +1,6 @@
-import {StyledTitle, ExtraText, StyledSubTitle, ButtonPosition, colors, StyledFormArea, StyledFormArea2, StyledFormButton2, StyledFormButton, Avatar, StyledContainer, StyledAreaObject} from "./../componentes/styles";
-
-//Iconos
-import {RiAlarmWarningFill} from 'react-icons/ri';
-import {MdDescription} from 'react-icons/md';
-
-import {Formik, Form} from 'formik';
-import { TextInput } from '../componentes/FormLib';
-
+import {StyledTitle, StyledSubTitle, colors, StyledFormArea, Avatar} from "./../componentes/styles";
 import imagen from './../assets/seguridad.png';
-
-import React, { useEffect, useState } from "react";
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap'
 import { useRef } from "react";
 
 const Reportes = () => {
@@ -33,7 +21,7 @@ const Reportes = () => {
             "descripcion": descActo.current.value
         }
         const postDataJson = JSON.stringify(postData)
-        const response = await fetch('http://localhost:3500/reportes/ ',{
+        const response = await fetch('http://34.66.206.26:8000/reportes/ ',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: postDataJson
@@ -66,14 +54,14 @@ const Reportes = () => {
                     <label>Barrio</label>
                     <input type={'text'} placeholder={'Nombre del Barrio'} ref={barrio}></input>
                     <label>Tipo de acto</label>
-                    <input type={'text'} placeholder={'Tipo de acto'} ref={tipoActo}></input>
+                    <input type={'text'} placeholder={'Example: Hurto'} ref={tipoActo}></input>
                     <label>Descripcion</label>
                     <input type={'text'} placeholder={'Describa el suceso'} ref={descActo}></input>
                     <label>Longitud</label>
                     <input type={'text'} placeholder={'0.0000000'} ref={longitud}></input>
                     <label>Latitud</label>
                     <input type={'text'} placeholder={'0.0000000'} ref={latitud}></input>
-                    <button type="submit">Enviar</button>
+                    <button type="submit" className="reports-button">Enviar</button>
                 </form>
             </StyledFormArea>
             <br /><br /><br /><br /><br /><br /><br /><br />

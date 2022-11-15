@@ -14,10 +14,9 @@ function Mapa() {
 
     const [places, setPlaces] = useState([]);
     const [positions, setPositions] = useState([]);
-    const [dangerrousnes, setDangerousnes] = useState([])
 
     async function fetchMapData(){
-        const response = await fetch('http://localhost:3500/barrios/',
+        const response = await fetch('http://34.66.206.26:8000/barrios/',
         {
             method: 'GET',
             headers:{
@@ -30,7 +29,7 @@ function Mapa() {
     }
 
     async function fetchHurtoPositions(){
-        const response = await fetch('http://localhost:3500/hurtos/positions',
+        const response = await fetch('http://34.66.206.26:8000/hurtos/positions',
         {
             method: 'GET',
             headers:{
@@ -41,62 +40,14 @@ function Mapa() {
         setPositions(data);
     }
 
-    async function fetchHurtosPerHood(){
-        const response = await fetch('http://localhost:3500/hurtos/hurtosPerHood',{
-            method: 'GET',
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        });
-        const data = await response.json();
-        setDangerousnes(calculate(data))
-    }
-
-    function calculate(data){
-        let dangerZones = {}
-        let cont = 0;
-        for(let i = 0; i < data.length; i += 1){
-            if(dangerZones[data[i]] === undefined){
-                dangerZones[data[i]] = 1;
-            }else{
-                dangerZones[data[i]] += 1; 
-            }
-            cont += 1
-        }
-        return dangerZones
-    }
-
     useEffect(()=>{
         fetchMapData();
         fetchHurtoPositions();
-        fetchHurtosPerHood();
         mapPainting();
     },[])
 
-    function colorAssignation(val){
-        if(val > (findMaxScore()*0.08)){
-            return 'red'
-        }
-        else if(val < (findMaxScore()*0.03)){
-            return 'green';
-        }else if((findMaxScore()*0.04) < val < (findMaxScore()*0.7)){
-            return 'yellow';
-        }
-    }
-
-    function setLevelSecurityToPlaces(){
-        let dangerObjects = Object.keys(dangerrousnes)
-        for(let i = 0; i < places.length; i += 1){
-            for(let j = 0; j < dangerObjects.length; j += 1){
-                if(places[i].properties.CODIGO === dangerObjects[j]){
-                    places[i].properties['SEC_LEVEL'] = colorAssignation(dangerrousnes[dangerObjects[j]])
-                }
-            }
-        }
-    }
-
     const mapPainting = () =>{
-        if(places.length > 0 && dangerrousnes !== null){
+        if(places.length > 0){
             return(
                 places.map( (place) =>{
                     return (
@@ -149,11 +100,6 @@ function Mapa() {
             );
         }
     }
-     
-    function findMaxScore(){
-        let arr = Object.values(dangerrousnes)
-        return Math.max.apply(null,arr)
-    }
 
     return (
         <div className='mapa'>
@@ -164,8 +110,6 @@ function Mapa() {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {mapPainting()}
-                {findMaxScore()}
-                {dangerrousnes !== []?setLevelSecurityToPlaces():null}
             </MapContainer>
         </div>
     );

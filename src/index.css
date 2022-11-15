@@ -1,0 +1,62 @@
+.reports-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reports-form input{
+    width: 280px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-style: none;
+    background-color:#DCDCDC;
+}
+
+.reports-form input{
+    text-align: center;
+}
+
+.reports-button{
+    margin-top: 10px;
+    padding: 10px;
+    width: 150px;
+    background-color: white;
+    font-size: 16px;
+    border: 3px solid green;
+    border-radius: 25px;
+    text-decoration: none;
+    color: green;
+    transition: 0.5s;
+}
+
+.reports-button:hover{
+    background-color: green;
+    color: white;
+}
+
+.link{
+    color: green;
+    text-decoration: none;
+}
+
+.link:hover{
+    color: white;
+}
+
+.reportBox{
+    background-color: transparent;
+    margin: 25px;
+    text-align: left;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+.reportBox:hover{
+    color: white;
+    background-color: green;
+}

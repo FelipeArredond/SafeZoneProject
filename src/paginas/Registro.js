@@ -20,7 +20,7 @@ const Registro = () => {
             "contraseña": ContraseñaReg
         }
         const bodyJSON = JSON.stringify(body)
-        await fetch("http://localhost:3500/usuarios/ ", {
+        await fetch("http://34.66.206.26:8000/usuarios/ ", {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
             body: bodyJSON
