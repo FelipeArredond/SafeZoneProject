@@ -6,6 +6,7 @@ import {FiMail, FiLock} from 'react-icons/fi';
 import React, {useState, useContext} from "react";
 import { authContext } from '../context/authContext';
 import { Link } from 'react-router-dom';
+import { serverURL } from '../App';
 
 const Inicio = () => {
     const {authData,setAuthData} = useContext(authContext)
@@ -25,7 +26,7 @@ const Inicio = () => {
             "contraseña": ContraseñaIn
         }
         const postDataJson = JSON.stringify(postData)
-        const response = await fetch('http://34.66.206.26:8000/usuarios/log',{
+        const response = await fetch(serverURL+'usuarios/log',{
             method:'POST',
             headers: {'Content-Type': 'application/json'},
             body: postDataJson

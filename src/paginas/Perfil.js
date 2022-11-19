@@ -3,6 +3,7 @@ import icono_perfil from './../assets/icono_perfil.webp';
 import React, {useState, useEffect} from "react";
 import { useContext } from "react";
 import { authContext } from "../context/authContext";
+import { serverURL } from "../App";
 
 const Perfil = () => {
     
@@ -28,7 +29,7 @@ const Perfil = () => {
     };
 
     async function fetchReports(){
-        const data = await fetch('http://34.66.206.26:8000/usuarios/reports',options)
+        const data = await fetch(serverURL+'usuarios/reports',options)
         const res = await data.json();
         console.log(res);
         setReports(res);

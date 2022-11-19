@@ -6,6 +6,7 @@ import { icon } from 'leaflet';
 import mark from './../../images/gps.png'
 import { hoodsContext } from '../../context/barriosContext';
 import { mapMarkersContext } from '../../context/mapMarkersContext';
+import { serverURL } from '../../App';
 
 function Mapa() {
 
@@ -16,7 +17,7 @@ function Mapa() {
     const [positions, setPositions] = useState([]);
 
     async function fetchMapData(){
-        const response = await fetch('http://34.66.206.26:8000/barrios/',
+        const response = await fetch(serverURL+'barrios',
         {
             method: 'GET',
             headers:{
@@ -29,7 +30,7 @@ function Mapa() {
     }
 
     async function fetchHurtoPositions(){
-        const response = await fetch('http://34.66.206.26:8000/hurtos/positions',
+        const response = await fetch(serverURL+'hurtos/positions',
         {
             method: 'GET',
             headers:{

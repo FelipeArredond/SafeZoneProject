@@ -18,7 +18,7 @@ import MapMarkerProvider from './context/mapMarkersContext';
 import AuthProvider from './context/authContext';
 import Protectedroutes from './componentes/Protectedroutes';
 
-
+export const serverURL = 'http://ec2-3-239-169-93.compute-1.amazonaws.com:4000/'
 
 function App() {
   return (

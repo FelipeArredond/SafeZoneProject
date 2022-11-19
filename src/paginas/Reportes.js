@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRef } from "react";
 import { useContext } from "react";
 import { authContext } from "../context/authContext";
+import { serverURL } from "../App";
 
 const Reportes = () => {
 
@@ -26,13 +27,13 @@ const Reportes = () => {
             "descripcion": descActo.current.value
         }
         const postDataJson = JSON.stringify(postData)
-        const response = await fetch('http://34.66.206.26:8000/reportes/ ',{
+        const response = await fetch(serverURL+'reportes/ ',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: postDataJson
         });
         const data = await response.json();
-        console.log(data)
+        alert('Se ha enviado correctamente el reporte')
     }
 
     return(

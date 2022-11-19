@@ -4,6 +4,7 @@ import {Formik, Form} from 'formik';
 import { TextInput } from '../componentes/FormLib';
 import {FiMail, FiLock, FiUser} from 'react-icons/fi';
 import React, { useEffect, useState } from "react";
+import { serverURL } from '../App';
 
 const Registro = () => {
 
@@ -20,7 +21,7 @@ const Registro = () => {
             "contraseña": ContraseñaReg
         }
         const bodyJSON = JSON.stringify(body)
-        await fetch("http://34.66.206.26:8000/usuarios/ ", {
+        await fetch(serverURL+"usuarios/", {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
             body: bodyJSON
